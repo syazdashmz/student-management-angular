@@ -1,0 +1,65 @@
+<div class="students-page">
+  <div class="page-heading">
+    <div>
+      <p class="eyebrow">Express + MySQL API</p>
+      <h2>Student Management</h2>
+      <p>GET request from your Express backend user table.</p>
+    </div>
+
+    <button mat-flat-button color="primary" type="button" routerLink="/students/form">
+      <mat-icon>person_add</mat-icon>
+      Add Student
+    </button>
+  </div>
+
+  @if (isLoading) {
+    <mat-card class="status-card">Loading students...</mat-card>
+  }
+
+  @if (errorMessage) {
+    <mat-card class="status-card error">{{ errorMessage }}</mat-card>
+  }
+
+  @if (!isLoading && !errorMessage && studentList.length === 0) {
+    <mat-card class="status-card">
+      No students found.
+    </mat-card>
+  }
+
+  <div class="student-grid">
+    @for (student of studentList; track student.id || $index) {
+      <mat-card class="student-card">
+        <mat-card-header>
+          <div mat-card-avatar class="avatar">
+            {{ student?.name?.charAt(0) || '?' }}
+          </div>
+
+          <mat-card-title>
+            {{ student?.name || 'No name' }}
+          </mat-card-title>
+
+          <mat-card-subtitle>
+            {{ student?.student_no || 'No student number' }}
+          </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p>
+            <mat-icon>email</mat-icon>
+            {{ student?.email || 'No email' }}
+          </p>
+
+          <p>
+            <mat-icon>phone</mat-icon>
+            {{ student?.phone || 'No phone number' }}
+          </p>
+
+          <p>
+            <mat-icon>badge</mat-icon>
+            {{ student?.type || 'No type' }}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    }
+  </div>
+</div>

@@ -1,0 +1,120 @@
+.todo-page {
+  width: min(900px, 100%);
+  margin: 0 auto;
+}
+
+.todo-card {
+  border: 0;
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+  overflow: hidden;
+}
+
+.todo-header {
+  padding: 28px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+
+  .eyebrow {
+    margin: 0 0 6px;
+    color: #1abc9c;
+    font-weight: 900;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0;
+    color: #102a43;
+    font-size: 38px;
+    font-weight: 900;
+  }
+
+  p {
+    margin: 8px 0 0;
+    color: #64748b;
+  }
+
+  button {
+    border-radius: 999px;
+    font-weight: 800;
+
+    mat-icon {
+      margin-right: 6px;
+    }
+  }
+}
+
+mat-card-content {
+  padding: 24px 28px 28px;
+}
+
+.todo-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.todo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  strong {
+    color: #102a43;
+  }
+
+  small {
+    color: #64748b;
+  }
+
+  &.completed {
+    strong {
+      color: #94a3b8;
+      text-decoration: line-through;
+    }
+  }
+}
+
+.spacer {
+  flex: 1;
+}
+
+.empty-state {
+  padding: 50px 20px;
+  text-align: center;
+  color: #64748b;
+
+  mat-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 64px;
+    color: #1abc9c;
+  }
+
+  h3 {
+    margin-bottom: 4px;
+    color: #102a43;
+  }
+}
+
+.clear-button {
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+@media (max-width: 650px) {
+  .todo-header {
+    flex-direction: column;
+    align-items: stretch;
+
+    button {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,121 @@
+.app-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(26, 188, 156, 0.18), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(63, 81, 181, 0.18), transparent 35%),
+    #f4f7fb;
+}
+
+.hero-section {
+  padding: 72px 20px 52px;
+  background: linear-gradient(135deg, #102a43, #1abc9c);
+  color: #ffffff;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.88;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(36px, 5vw, 68px);
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.subtitle {
+  max-width: 780px;
+  margin: 20px auto 0;
+  font-size: 18px;
+  line-height: 1.7;
+  opacity: 0.94;
+}
+
+.module-tags {
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  span {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    backdrop-filter: blur(10px);
+  }
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: rgba(18, 24, 38, 0.94);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.18);
+
+  a,
+  button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 18px;
+    border-radius: 999px;
+    color: #dbeafe;
+    text-decoration: none;
+    font-weight: 800;
+    transition: 0.2s ease;
+  }
+
+  a:hover,
+  button:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+  }
+
+  a.active {
+    background: #1abc9c;
+    color: #06281f;
+  }
+}
+
+.page-content {
+  padding: 36px 18px 60px;
+}
+
+@media (max-width: 720px) {
+  .hero-section {
+    padding: 54px 16px 40px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .navbar {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+
+  .page-content {
+    padding: 20px 10px 40px;
+  }
+}

@@ -1,0 +1,14 @@
+.todo-form {
+  width: 100%;
+  min-width: 320px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .todo-form {
+    min-width: 240px;
+  }
+}

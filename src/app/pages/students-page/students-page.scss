@@ -1,0 +1,99 @@
+.students-page {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+}
+
+.page-heading {
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+
+  .eyebrow {
+    margin: 0 0 8px;
+    color: #1abc9c;
+    font-weight: 900;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0;
+    color: #102a43;
+    font-size: 42px;
+    font-weight: 900;
+  }
+
+  p {
+    color: #64748b;
+  }
+
+  button {
+    border-radius: 999px;
+    font-weight: 800;
+
+    mat-icon {
+      margin-right: 6px;
+    }
+  }
+}
+
+.status-card {
+  padding: 22px;
+  border-radius: 20px;
+  text-align: center;
+
+  &.error {
+    color: #991b1b;
+    background: #fee2e2;
+  }
+}
+
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.student-card {
+  border: 0;
+  border-radius: 24px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
+
+  .avatar {
+    display: grid;
+    place-items: center;
+    background: #1abc9c;
+    color: #06281f;
+    font-weight: 900;
+  }
+
+  mat-card-content {
+    p {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #475569;
+    }
+
+    mat-icon {
+      color: #0f766e;
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  .page-heading {
+    flex-direction: column;
+    align-items: stretch;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .student-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,79 @@
+<div class="form-page">
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>Add Student</mat-card-title>
+      <mat-card-subtitle>
+        POST request to protected Express API route
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      @if (errorMessage) {
+        <div class="error-box">{{ errorMessage }}</div>
+      }
+
+      <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" type="text" />
+
+          @if (
+            studentForm.controls['name'].invalid &&
+            studentForm.controls['name'].touched
+          ) {
+            <mat-error>Please enter a valid name</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Student Number</mat-label>
+          <input matInput formControlName="studentNo" type="text" />
+
+          @if (
+            studentForm.controls['studentNo'].invalid &&
+            studentForm.controls['studentNo'].touched
+          ) {
+            <mat-error>Student number must be 12 digits</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" />
+
+          @if (
+            studentForm.controls['email'].invalid &&
+            studentForm.controls['email'].touched
+          ) {
+            <mat-error>Please enter a valid email</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="phone" type="text" />
+
+          @if (
+            studentForm.controls['phone'].invalid &&
+            studentForm.controls['phone'].touched
+          ) {
+            <mat-error>Phone number must be 10–11 digits</mat-error>
+          }
+        </mat-form-field>
+
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="studentForm.invalid || isSubmitting"
+        >
+          {{ isSubmitting ? 'Submitting...' : 'Submit' }}
+        </button>
+
+        <button mat-button type="button" routerLink="/students">
+          Back to Students
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

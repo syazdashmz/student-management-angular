@@ -1,0 +1,46 @@
+.form-page {
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+}
+
+.form-card {
+  width: min(560px, 100%);
+  border: 0;
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+}
+
+mat-card-header {
+  padding: 28px 28px 0;
+}
+
+mat-card-title {
+  color: #102a43;
+  font-size: 32px;
+  font-weight: 900;
+}
+
+mat-card-content {
+  padding: 24px 28px 28px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  button {
+    height: 46px;
+    border-radius: 999px;
+    font-weight: 800;
+  }
+}
+
+.error-box {
+  margin-bottom: 18px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  color: #991b1b;
+  background: #fee2e2;
+}

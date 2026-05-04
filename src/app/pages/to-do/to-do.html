@@ -1,0 +1,74 @@
+<div class="todo-page">
+  <mat-card class="todo-card">
+    <div class="todo-header">
+      <div>
+        <p class="eyebrow">Local Storage Module</p>
+        <h2>To-Do List</h2>
+        <p>
+          {{ completedCount }} completed /
+          {{ todoList.length }} total tasks
+        </p>
+      </div>
+
+      <button mat-flat-button color="primary" type="button" (click)="onAdd()">
+        <mat-icon>add</mat-icon>
+        Add List
+      </button>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-content>
+      @if (todoList.length === 0) {
+        <div class="empty-state">
+          <mat-icon>playlist_add_check</mat-icon>
+          <h3>No tasks yet</h3>
+          <p>Add your first Angular training task.</p>
+        </div>
+      } @else {
+        <mat-list>
+          @for (todo of todoList; track $index) {
+            <mat-list-item>
+              <div class="todo-item">
+                <button
+                  mat-icon-button
+                  type="button"
+                  (click)="onSelected($index)"
+                >
+                  <mat-icon color="primary">
+                    {{ todo.selected ? 'check_box' : 'check_box_outline_blank' }}
+                  </mat-icon>
+                </button>
+
+                <div class="todo-text" [class.completed]="todo.selected">
+                  <strong>{{ todo.title }}</strong>
+                  <small>{{ todo.createdAt | date: 'medium' }}</small>
+                </div>
+
+                <span class="spacer"></span>
+
+                <button
+                  mat-icon-button
+                  color="warn"
+                  type="button"
+                  (click)="onDelete($index)"
+                >
+                  <mat-icon>delete_forever</mat-icon>
+                </button>
+              </div>
+            </mat-list-item>
+          }
+        </mat-list>
+
+        <button
+          mat-stroked-button
+          type="button"
+          class="clear-button"
+          (click)="onClearCompleted()"
+        >
+          Clear Completed
+        </button>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>

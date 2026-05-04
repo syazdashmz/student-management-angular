@@ -1,0 +1,205 @@
+<div class="calculator-page">
+  <mat-card class="calculator-card">
+    <div class="card-topbar">
+      <div>
+        <p class="small-title">Training Project</p>
+        <h2>Advanced Calculator</h2>
+      </div>
+
+      <div class="status-pill" [class.success]="status === 'success'" [class.error]="status === 'error'">
+        <mat-icon>
+          @if (status === 'success') {
+            check_circle
+          } @else if (status === 'error') {
+            error
+          } @else {
+            radio_button_unchecked
+          }
+        </mat-icon>
+
+        {{ activeOperation }}
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-content>
+      <section class="display-panel" [class.error-panel]="status === 'error'">
+        <p class="display-label">Current Result</p>
+        <h1>{{ result | number: '1.0-10' }}</h1>
+        <p class="display-message">{{ resultText }}</p>
+      </section>
+
+      <form class="calculator-form" [formGroup]="calculateForm">
+        <div class="input-grid">
+          <mat-form-field appearance="outline">
+            <mat-label>First Number</mat-label>
+            <input
+              matInput
+              formControlName="textField1"
+              type="number"
+              placeholder="Example: 20"
+            />
+
+            @if (
+              calculateForm.controls['textField1'].invalid &&
+              calculateForm.controls['textField1'].touched
+            ) {
+              <mat-error>First number is required</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Second Number</mat-label>
+            <input
+              matInput
+              formControlName="textField2"
+              type="number"
+              placeholder="Example: 5"
+            />
+
+            @if (
+              calculateForm.controls['textField2'].invalid &&
+              calculateForm.controls['textField2'].touched
+            ) {
+              <mat-error>Second number is required</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="quick-actions">
+          <button mat-stroked-button type="button" (click)="onSwapNumbers()">
+            <mat-icon>swap_horiz</mat-icon>
+            Swap
+          </button>
+
+          <button mat-stroked-button type="button" (click)="onClear()">
+            <mat-icon>refresh</mat-icon>
+            Clear
+          </button>
+        </div>
+
+        <section class="operation-section">
+          <p class="section-title">Basic Operations</p>
+
+          <div class="operation-grid">
+            <button mat-flat-button type="button" class="operation-button" (click)="onAdd()">
+              <mat-icon>add</mat-icon>
+              Add
+            </button>
+
+            <button mat-flat-button type="button" class="operation-button" (click)="onSubtract()">
+              <mat-icon>remove</mat-icon>
+              Subtract
+            </button>
+
+            <button mat-flat-button type="button" class="operation-button" (click)="onMultiply()">
+              <mat-icon>close</mat-icon>
+              Multiply
+            </button>
+
+            <button mat-flat-button type="button" class="operation-button" (click)="onDivide()">
+              <mat-icon>percent</mat-icon>
+              Divide
+            </button>
+          </div>
+        </section>
+
+        <section class="operation-section">
+          <p class="section-title">Advanced Operations</p>
+
+          <div class="operation-grid">
+            <button mat-flat-button type="button" class="operation-button secondary" (click)="onPower()">
+              xʸ Power
+            </button>
+
+            <button mat-flat-button type="button" class="operation-button secondary" (click)="onModulo()">
+              mod Remainder
+            </button>
+
+            <button mat-flat-button type="button" class="operation-button secondary" (click)="onAverage()">
+              Avg Average
+            </button>
+
+            <button mat-flat-button type="button" class="operation-button secondary" (click)="onSquareRootFirst()">
+              √x Square Root
+            </button>
+
+            <button mat-flat-button type="button" class="operation-button secondary" (click)="onSquareFirst()">
+              x² Square
+            </button>
+
+            <button mat-flat-button type="button" class="operation-button secondary" (click)="onPercentage()">
+              % Percentage
+            </button>
+          </div>
+        </section>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <aside class="side-panel">
+    <mat-card class="rules-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>gpp_maybe</mat-icon>
+          Math Safety Rules
+        </mat-card-title>
+        <mat-card-subtitle>Forbidden logic handled by this calculator</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <ul>
+          <li>No division by zero.</li>
+          <li>No modulo by zero.</li>
+          <li>No square root of negative numbers in real-number mode.</li>
+          <li>No invalid, empty, infinite, or unsafe results.</li>
+          <li>No indeterminate 0<sup>0</sup> power operation.</li>
+          <li>Results are rounded to avoid long floating-point noise.</li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="history-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>history</mat-icon>
+          History
+        </mat-card-title>
+        <mat-card-subtitle>Click a result to reuse it</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        @if (history.length === 0) {
+          <p class="empty-history">No calculations yet.</p>
+        } @else {
+    <div class="history-list">
+    @for (item of history; track $index) {
+        <button
+        type="button"
+        class="history-item"
+        (click)="onUseHistoryResult(item.result)"
+        >
+        <div class="history-main-row">
+            <span class="history-expression">{{ item.expression }}</span>
+            <span class="history-equals">=</span>
+            <strong class="history-result">
+            {{ item.result | number: '1.0-10' }}
+            </strong>
+        </div>
+
+        <div class="history-sub-row">
+            <span>Click to reuse answer</span>
+            <mat-icon>north_west</mat-icon>
+        </div>
+        </button>
+    }
+    </div>
+          <button mat-button type="button" class="clear-history" (click)="onClearHistory()">
+            Clear History
+          </button>
+        }
+      </mat-card-content>
+    </mat-card>
+  </aside>
+</div>
