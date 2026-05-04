@@ -18,7 +18,7 @@ mat-card-header {
 
 mat-card-title {
   color: #102a43;
-  font-size: 34px;
+  font-size: clamp(30px, 5vw, 34px);
   font-weight: 900;
 }
 
@@ -54,5 +54,28 @@ mat-card-actions {
     color: #0f766e;
     font-weight: 800;
     text-decoration: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .login-container {
+    min-height: auto;
+    display: block;
+  }
+
+  .login-card {
+    border-radius: 20px;
+  }
+
+  mat-card-header {
+    padding: 22px 20px 0;
+  }
+
+  mat-card-content {
+    padding: 20px;
+  }
+
+  mat-card-actions {
+    padding: 0 20px 22px;
   }
 }

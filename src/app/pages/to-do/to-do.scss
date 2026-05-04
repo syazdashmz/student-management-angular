@@ -28,7 +28,7 @@
   h2 {
     margin: 0;
     color: #102a43;
-    font-size: 38px;
+    font-size: clamp(30px, 5vw, 38px);
     font-weight: 900;
   }
 
@@ -40,6 +40,7 @@
   button {
     border-radius: 999px;
     font-weight: 800;
+    flex-shrink: 0;
 
     mat-icon {
       margin-right: 6px;
@@ -59,12 +60,14 @@ mat-card-content {
 }
 
 .todo-text {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 3px;
 
   strong {
     color: #102a43;
+    overflow-wrap: anywhere;
   }
 
   small {
@@ -110,11 +113,35 @@ mat-card-content {
 
 @media (max-width: 650px) {
   .todo-header {
+    padding: 22px;
     flex-direction: column;
     align-items: stretch;
+    text-align: center;
 
     button {
       width: 100%;
+    }
+  }
+
+  mat-card-content {
+    padding: 18px;
+  }
+
+  .todo-card {
+    border-radius: 20px;
+  }
+
+  .todo-item {
+    gap: 8px;
+  }
+
+  .todo-text {
+    strong {
+      font-size: 14px;
+    }
+
+    small {
+      font-size: 11px;
     }
   }
 }

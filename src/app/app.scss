@@ -29,7 +29,7 @@
 
 h1 {
   margin: 0;
-  font-size: clamp(36px, 5vw, 68px);
+  font-size: clamp(34px, 6vw, 68px);
   font-weight: 900;
   line-height: 1.05;
 }
@@ -57,6 +57,7 @@ h1 {
     font-size: 13px;
     font-weight: 800;
     backdrop-filter: blur(10px);
+    white-space: nowrap;
   }
 }
 
@@ -76,6 +77,7 @@ h1 {
   button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     padding: 11px 18px;
     border-radius: 999px;
@@ -83,6 +85,7 @@ h1 {
     text-decoration: none;
     font-weight: 800;
     transition: 0.2s ease;
+    white-space: nowrap;
   }
 
   a:hover,
@@ -95,15 +98,19 @@ h1 {
     background: #1abc9c;
     color: #06281f;
   }
+
+  mat-icon {
+    flex: 0 0 auto;
+  }
 }
 
 .page-content {
   padding: 36px 18px 60px;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .hero-section {
-    padding: 54px 16px 40px;
+    padding: 56px 18px 42px;
   }
 
   .subtitle {
@@ -113,9 +120,68 @@ h1 {
   .navbar {
     justify-content: flex-start;
     overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    a,
+    button {
+      flex: 0 0 auto;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    padding: 42px 14px 32px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 1.4px;
+  }
+
+  h1 {
+    font-size: 34px;
+    line-height: 1.1;
+  }
+
+  .subtitle {
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .module-tags {
+    margin-top: 18px;
+    gap: 8px;
+
+    span {
+      padding: 7px 10px;
+      font-size: 11px;
+    }
+  }
+
+  .navbar {
+    padding: 10px;
+    gap: 8px;
+
+    a,
+    button {
+      padding: 9px 12px;
+      font-size: 12px;
+
+      mat-icon {
+        width: 18px;
+        height: 18px;
+        font-size: 18px;
+      }
+    }
   }
 
   .page-content {
-    padding: 20px 10px 40px;
+    padding: 18px 10px 36px;
   }
 }

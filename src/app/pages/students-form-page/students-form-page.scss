@@ -17,7 +17,7 @@ mat-card-header {
 
 mat-card-title {
   color: #102a43;
-  font-size: 32px;
+  font-size: clamp(28px, 5vw, 32px);
   font-weight: 900;
 }
 
@@ -43,4 +43,28 @@ form {
   border-radius: 14px;
   color: #991b1b;
   background: #fee2e2;
+}
+
+@media (max-width: 600px) {
+  .form-page {
+    min-height: auto;
+    display: block;
+  }
+
+  .form-card {
+    border-radius: 20px;
+  }
+
+  mat-card-header {
+    padding: 22px 20px 0;
+    text-align: center;
+  }
+
+  mat-card-content {
+    padding: 20px;
+  }
+
+  form {
+    gap: 12px;
+  }
 }
