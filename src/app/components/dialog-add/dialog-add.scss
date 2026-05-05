@@ -1,14 +1,82 @@
+:host {
+  display: block;
+}
+
 .todo-form {
-  width: 100%;
-  min-width: 320px;
+  width: min(420px, 100%);
 }
 
 mat-form-field {
   width: 100%;
 }
 
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 26px !important;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(248, 251, 255, 0.97)),
+    #ffffff !important;
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.18) !important;
+}
+
+::ng-deep .mat-mdc-dialog-title {
+  padding: 28px 28px 6px !important;
+  color: #102a43 !important;
+  font-size: 26px !important;
+  font-weight: 950 !important;
+  letter-spacing: -0.3px;
+}
+
+::ng-deep .mat-mdc-dialog-content {
+  padding: 18px 28px 12px !important;
+}
+
+.dialog-actions {
+  padding: 8px 28px 28px !important;
+  gap: 12px;
+}
+
+.dialog-cancel-button,
+.dialog-add-button {
+  min-height: 44px;
+  padding-inline: 20px !important;
+  border-radius: 999px !important;
+  font-weight: 950 !important;
+}
+
+.dialog-cancel-button {
+  color: #102a43 !important;
+  border-color: rgba(16, 42, 67, 0.18) !important;
+}
+
+.dialog-add-button {
+  background: linear-gradient(135deg, #0f766e, #1abc9c) !important;
+  color: #ffffff !important;
+  box-shadow: 0 12px 24px rgba(26, 188, 156, 0.24);
+}
+
 @media (max-width: 480px) {
   .todo-form {
-    min-width: 240px;
+    width: 100%;
+  }
+
+  ::ng-deep .mat-mdc-dialog-title {
+    padding: 24px 20px 4px !important;
+    font-size: 23px !important;
+  }
+
+  ::ng-deep .mat-mdc-dialog-content {
+    padding: 16px 20px 8px !important;
+  }
+
+  .dialog-actions {
+    padding: 8px 20px 22px !important;
+    display: grid !important;
+    grid-template-columns: 1fr;
+  }
+
+  .dialog-cancel-button,
+  .dialog-add-button {
+    width: 100%;
   }
 }

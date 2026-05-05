@@ -13,7 +13,7 @@ import { Auth } from './services/auth';
   styleUrl: './app.scss',
 })
 export class App {
-  title = 'student-management-training-portal';;
+  title = 'student-management-training-portal';
 
   constructor(
     public authService: Auth,

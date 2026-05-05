@@ -1,33 +1,62 @@
+:root {
+  --color-primary: #1abc9c;
+  --color-primary-dark: #0f766e;
+  --color-primary-soft: #dffbf4;
+
+  --color-navy: #102a43;
+  --color-bg: #f4f7fb;
+  --color-card: #ffffff;
+  --color-text: #102a43;
+  --color-muted: #64748b;
+  --color-border: #dbe4ef;
+
+  --color-danger: #dc2626;
+  --color-danger-soft: #fee2e2;
+
+  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.1);
+  --shadow-medium: 0 24px 70px rgba(15, 23, 42, 0.14);
+
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+}
+
 html,
 body {
   width: 100%;
   max-width: 100%;
   min-height: 100%;
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: #f4f7fb;
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
   overflow-x: hidden;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 img {
   max-width: 100%;
+  display: block;
 }
 
 button,
 a,
 input,
 textarea,
+select,
 mat-card,
 mat-form-field {
   min-width: 0;
 }
 
-body {
-  color: #102a43;
+a {
+  color: inherit;
 }
 
 .mat-mdc-card {
@@ -36,4 +65,124 @@ body {
 
 .mat-mdc-form-field {
   width: 100%;
+}
+
+/* ======================================================
+   MODERN ANGULAR MATERIAL TEXT FIELD POLISH
+   Prevents label/placeholder overlap and improves spacing.
+====================================================== */
+
+.mat-mdc-form-field {
+  width: 100%;
+
+  --mdc-outlined-text-field-container-shape: 18px;
+  --mdc-outlined-text-field-outline-color: #cbd5e1;
+  --mdc-outlined-text-field-hover-outline-color: #1abc9c;
+  --mdc-outlined-text-field-focus-outline-color: #1abc9c;
+  --mdc-outlined-text-field-label-text-color: #64748b;
+  --mdc-outlined-text-field-focus-label-text-color: #0f766e;
+  --mdc-outlined-text-field-input-text-color: #102a43;
+  --mdc-outlined-text-field-error-outline-color: #ef4444;
+  --mdc-outlined-text-field-error-label-text-color: #dc2626;
+}
+
+.mat-mdc-form-field .mat-mdc-text-field-wrapper {
+  min-height: 62px;
+  border-radius: 18px !important;
+  background: rgba(248, 250, 252, 0.74) !important;
+  transition:
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.mat-mdc-form-field:hover .mat-mdc-text-field-wrapper {
+  background: #ffffff !important;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+}
+
+.mat-mdc-form-field.mat-focused .mat-mdc-text-field-wrapper {
+  background: #ffffff !important;
+  box-shadow: 0 14px 32px rgba(26, 188, 156, 0.12);
+}
+
+.mat-mdc-form-field .mat-mdc-form-field-flex {
+  min-height: 62px;
+  align-items: center;
+}
+
+.mat-mdc-form-field .mat-mdc-form-field-infix {
+  min-height: 62px !important;
+  padding-top: 22px !important;
+  padding-bottom: 10px !important;
+}
+
+.mat-mdc-form-field .mat-mdc-input-element {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 22px !important;
+  color: #102a43 !important;
+  caret-color: #0f766e !important;
+}
+
+.mat-mdc-form-field .mdc-floating-label {
+  font-size: 14px !important;
+  font-weight: 850 !important;
+  letter-spacing: 0.1px;
+}
+
+.mat-mdc-form-field .mat-mdc-form-field-icon-suffix {
+  padding-left: 8px;
+}
+
+.mat-mdc-form-field .mat-mdc-icon-button {
+  color: #102a43 !important;
+}
+
+.mat-mdc-form-field-error {
+  color: #dc2626 !important;
+  font-size: 12px !important;
+  font-weight: 850 !important;
+}
+
+.mat-mdc-form-field-hint {
+  color: #64748b !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+  min-height: 22px;
+  padding-left: 4px;
+}
+
+.mat-mdc-raised-button,
+.mat-mdc-flat-button,
+.mat-mdc-stroked-button,
+.mat-mdc-button {
+  border-radius: 999px !important;
+  font-weight: 850 !important;
+}
+
+@media (max-width: 600px) {
+  .mat-mdc-form-field .mat-mdc-text-field-wrapper {
+    min-height: 58px;
+  }
+
+  .mat-mdc-form-field .mat-mdc-form-field-flex {
+    min-height: 58px;
+  }
+
+  .mat-mdc-form-field .mat-mdc-form-field-infix {
+    min-height: 58px !important;
+    padding-top: 20px !important;
+    padding-bottom: 9px !important;
+  }
+
+  .mat-mdc-form-field .mat-mdc-input-element {
+    font-size: 15px !important;
+  }
+
+  .mat-mdc-form-field .mdc-floating-label {
+    font-size: 13px !important;
+  }
 }

@@ -1,16 +1,18 @@
 <main class="app-shell">
   <section class="hero-section">
+    <div class="hero-overlay"></div>
+
     <div class="hero-content">
-      <p class="eyebrow">MyMahir Fullstack Developer Track</p>
+      <p class="hero-eyebrow">MyMahir Fullstack Developer Track</p>
 
       <h1>Student Management Training Portal</h1>
 
-      <p class="subtitle">
+      <p class="hero-subtitle">
         Angular fullstack training app for student records, API integration,
         authentication, local storage, route protection, PWA, and deployment practice.
       </p>
 
-      <div class="module-tags">
+      <div class="module-tags" aria-label="Project modules">
         <span>Angular Material</span>
         <span>HttpClient</span>
         <span>Express API</span>
@@ -22,37 +24,39 @@
   </section>
 
   <nav class="navbar" aria-label="Main navigation">
-    <a routerLink="/calculator" routerLinkActive="active">
-      <mat-icon>calculate</mat-icon>
-      Calculator
-    </a>
-
-    <a routerLink="/todo" routerLinkActive="active">
-      <mat-icon>checklist</mat-icon>
-      Todo
-    </a>
-
-    <a routerLink="/api-get" routerLinkActive="active">
-      <mat-icon>cloud_download</mat-icon>
-      HttpClient
-    </a>
-
-    <a routerLink="/students" routerLinkActive="active">
-      <mat-icon>school</mat-icon>
-      Students
-    </a>
-
-    @if (!authService.isLoggedIn()) {
-      <a routerLink="/login" routerLinkActive="active">
-        <mat-icon>login</mat-icon>
-        Login
+    <div class="nav-inner">
+      <a routerLink="/calculator" routerLinkActive="active">
+        <mat-icon>calculate</mat-icon>
+        <span>Calculator</span>
       </a>
-    } @else {
-      <button mat-button type="button" (click)="logout()">
-        <mat-icon>logout</mat-icon>
-        Logout
-      </button>
-    }
+
+      <a routerLink="/todo" routerLinkActive="active">
+        <mat-icon>checklist</mat-icon>
+        <span>Todo</span>
+      </a>
+
+      <a routerLink="/api-get" routerLinkActive="active">
+        <mat-icon>cloud_download</mat-icon>
+        <span>HttpClient</span>
+      </a>
+
+      <a routerLink="/students" routerLinkActive="active">
+        <mat-icon>school</mat-icon>
+        <span>Students</span>
+      </a>
+
+      @if (!authService.isLoggedIn()) {
+        <a routerLink="/login" routerLinkActive="active">
+          <mat-icon>login</mat-icon>
+          <span>Login</span>
+        </a>
+      } @else {
+        <button mat-button type="button" class="logout-button" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      }
+    </div>
   </nav>
 
   <section class="page-content">

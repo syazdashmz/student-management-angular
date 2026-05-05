@@ -1,123 +1,183 @@
 .app-shell {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(26, 188, 156, 0.18), transparent 35%),
-    radial-gradient(circle at bottom right, rgba(63, 81, 181, 0.18), transparent 35%),
-    #f4f7fb;
+    radial-gradient(circle at top left, rgba(26, 188, 156, 0.16), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.13), transparent 36%),
+    linear-gradient(180deg, #f8fbff 0%, #eef4fb 100%);
+  color: #102a43;
 }
 
 .hero-section {
-  padding: 72px 20px 52px;
-  background: linear-gradient(135deg, #102a43, #1abc9c);
+  position: relative;
+  min-height: 330px;
+  display: grid;
+  place-items: center;
+  padding: 72px 20px 58px;
+  overflow: hidden;
   color: #ffffff;
   text-align: center;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.14), transparent 24%),
+    radial-gradient(circle at 85% 28%, rgba(26, 188, 156, 0.35), transparent 25%),
+    linear-gradient(135deg, #102a43 0%, #0f5f66 54%, #1abc9c 100%);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 55%),
+    radial-gradient(circle at center bottom, rgba(255, 255, 255, 0.12), transparent 34%);
 }
 
 .hero-content {
-  max-width: 980px;
+  position: relative;
+  z-index: 1;
+  width: min(980px, 100%);
   margin: 0 auto;
 }
 
-.eyebrow {
-  margin: 0 0 12px;
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 2px;
+.hero-eyebrow {
+  margin: 0 0 14px;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 2.4px;
   text-transform: uppercase;
-  opacity: 0.88;
+  opacity: 0.92;
 }
 
 h1 {
   margin: 0;
-  font-size: clamp(34px, 6vw, 68px);
-  font-weight: 900;
-  line-height: 1.05;
+  font-size: clamp(38px, 5.5vw, 72px);
+  font-weight: 950;
+  line-height: 1.03;
+  letter-spacing: -1.7px;
+  text-wrap: balance;
 }
 
-.subtitle {
-  max-width: 780px;
-  margin: 20px auto 0;
+.hero-subtitle {
+  max-width: 830px;
+  margin: 22px auto 0;
   font-size: 18px;
-  line-height: 1.7;
+  font-weight: 550;
+  line-height: 1.75;
   opacity: 0.94;
+  text-wrap: balance;
 }
 
 .module-tags {
-  margin-top: 26px;
+  margin-top: 30px;
   display: flex;
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
 
   span {
-    padding: 8px 14px;
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 8px 15px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.16);
     color: #ffffff;
     font-size: 13px;
-    font-weight: 800;
-    backdrop-filter: blur(10px);
+    font-weight: 850;
     white-space: nowrap;
+    backdrop-filter: blur(14px);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.16),
+      0 8px 24px rgba(15, 23, 42, 0.12);
   }
 }
 
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 50;
+  padding: 12px 16px;
+  background: rgba(17, 24, 39, 0.96);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.22);
+}
+
+.nav-inner {
+  width: min(980px, 100%);
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   gap: 10px;
-  padding: 12px 16px;
-  background: rgba(18, 24, 38, 0.94);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.18);
+}
 
-  a,
-  button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 11px 18px;
-    border-radius: 999px;
-    color: #dbeafe;
-    text-decoration: none;
-    font-weight: 800;
-    transition: 0.2s ease;
-    white-space: nowrap;
-  }
-
-  a:hover,
-  button:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
-  }
-
-  a.active {
-    background: #1abc9c;
-    color: #06281f;
-  }
+.nav-inner a,
+.logout-button {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #dbeafe;
+  text-decoration: none;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 850;
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease;
+  white-space: nowrap;
 
   mat-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
     flex: 0 0 auto;
   }
 }
 
+.nav-inner a:hover,
+.logout-button:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.nav-inner a.active {
+  background: #1abc9c;
+  color: #06281f;
+  box-shadow: 0 10px 24px rgba(26, 188, 156, 0.28);
+}
+
+.logout-button {
+  color: #dbeafe !important;
+}
+
 .page-content {
-  padding: 36px 18px 60px;
+  width: 100%;
+  padding: 38px 18px 64px;
 }
 
 @media (max-width: 900px) {
   .hero-section {
-    padding: 56px 18px 42px;
+    min-height: 300px;
+    padding: 58px 18px 46px;
   }
 
-  .subtitle {
+  .hero-subtitle {
     font-size: 16px;
   }
 
   .navbar {
+    padding: 10px 12px;
+  }
+
+  .nav-inner {
     justify-content: flex-start;
     overflow-x: auto;
     scrollbar-width: none;
@@ -127,7 +187,7 @@ h1 {
     }
 
     a,
-    button {
+    .logout-button {
       flex: 0 0 auto;
     }
   }
@@ -135,42 +195,45 @@ h1 {
 
 @media (max-width: 600px) {
   .hero-section {
-    padding: 42px 14px 32px;
+    min-height: auto;
+    padding: 44px 14px 36px;
   }
 
-  .eyebrow {
+  .hero-eyebrow {
     font-size: 11px;
-    letter-spacing: 1.4px;
+    letter-spacing: 1.5px;
   }
 
   h1 {
     font-size: 34px;
-    line-height: 1.1;
+    line-height: 1.08;
+    letter-spacing: -0.8px;
   }
 
-  .subtitle {
-    margin-top: 14px;
+  .hero-subtitle {
+    margin-top: 15px;
     font-size: 14px;
-    line-height: 1.6;
+    line-height: 1.62;
   }
 
   .module-tags {
-    margin-top: 18px;
+    margin-top: 20px;
     gap: 8px;
 
     span {
+      min-height: 30px;
       padding: 7px 10px;
       font-size: 11px;
     }
   }
 
-  .navbar {
-    padding: 10px;
+  .nav-inner {
     gap: 8px;
 
     a,
-    button {
-      padding: 9px 12px;
+    .logout-button {
+      min-height: 40px;
+      padding: 8px 12px;
       font-size: 12px;
 
       mat-icon {
@@ -182,6 +245,6 @@ h1 {
   }
 
   .page-content {
-    padding: 18px 10px 36px;
+    padding: 20px 10px 42px;
   }
 }
